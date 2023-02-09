@@ -1,0 +1,27 @@
+body{
+    background-color: rgb(0, 162, 255);
+}
+input:text{
+    padding: 15px;
+    margin: 5px 0 20px 0;
+    display: inline-block;
+}
+input:image{
+    border-width: 10px;
+    border-color: rgb(26, 20, 20);
+}
+.button-submit{
+    height: 50px;
+    width: 100px;
+    color: blue;
+    border-color: black;
+}
+div{
+margin-bottom: 50px;
+
+}
+label{
+display: inline-block;
+text-align: left;
+width: 150px;
+}

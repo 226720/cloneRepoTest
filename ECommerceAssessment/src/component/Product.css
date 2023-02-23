@@ -1,0 +1,26 @@
+body {
+    background-color: antiquewhite;
+    background-position: center;
+    background-size: cover;
+  }
+  .title{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+  }
+  .description{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: medium;
+  }
+  .price{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: medium;
+    font-weight: bold;
+  }
+  .button{
+    height: 35px;
+    margin-left :10px;
+    font-weight: bold;
+    background-color: rgb(165, 174, 238);
+  color: rgb(11, 10, 10);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
+  }

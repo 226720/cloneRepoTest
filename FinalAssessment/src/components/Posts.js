@@ -1,33 +1,40 @@
+
+
 import React, { useState, useEffect } from "react";
-import MaterialTable from "material-table";
+
+import Axios from "axios";
 
 function Posts() {
-  const [data, setData] = useState([]);
-  const columns = [
-    { title: "UserId", field: "userId" },
-    { title: "Id", field: "id" },
-    { title: "Title", field: "title" },
-    { title: "Content", field: "body" },
-  ];
+  const [posts, setPosts] = useState([]);
+
+  const fetchPosts = async () => {
+    const { data } = await Axios.get(
+      "https://jsonplaceholder.typicode.com/posts"
+    );
+    const posts = data;
+    setPosts(posts);
+    console.log(posts);
+  };
+
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((resp) => resp.json())
-      .then((resp) => {
-        setData(resp);
-      });
+    fetchPosts();
   }, []);
 
   return (
-    <div className="App">
-      <h4 align="center">Posts</h4>
-      <MaterialTable
-        title="Posts"
-        data={data}
-        columns={columns}
+    <div>
+      {posts.map((post) => (
+       <>
+       <p key={post.id}>ID No:{post.id}
         
+        </p>
+        <p key={post.id}>Title:{post.title}
         
+        </p>
+        <p key={post.id}>Body:{post.body}
         
-      />
+        </p>
+        </>
+      ))}
     </div>
   );
 }

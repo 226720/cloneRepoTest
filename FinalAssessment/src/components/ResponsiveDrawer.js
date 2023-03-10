@@ -38,6 +38,9 @@ export default function ResponsiveDrawer(props: Props) {
   function navigateHandlerPosts() {
     navigate("/posts");
   }
+  function navigateHandlerTodos() {
+    navigate("/todos");
+  }
   const { window } = props;
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -67,6 +70,18 @@ export default function ResponsiveDrawer(props: Props) {
         {["Products"].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton onClick={navigateHandler}>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+      <List>
+        {["Todos"].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton onClick={navigateHandlerTodos}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>

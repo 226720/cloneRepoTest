@@ -1,48 +1,35 @@
-import { React, useState, useEffect } from "react";
-import {
-  ImageList,
-  ImageListItem,
-  ImageListItemBar,
-  IconButton,
-} from "@mui/material";
+import React, { useState, useEffect } from "react";
+import MaterialTable from "material-table";
 
-export function Posts() {
-  const [datas, setDatas] = useState([]);
+function Posts() {
+  const [data, setData] = useState([]);
+  const columns = [
+    { title: "UserId", field: "userId" },
+    { title: "Id", field: "id" },
+    { title: "Title", field: "title" },
+    { title: "Content", field: "body" },
+  ];
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/photos")
-      .then((response) => response.json())
-      .then((Data) => {
-        setDatas(Data);
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then((resp) => resp.json())
+      .then((resp) => {
+        setData(resp);
       });
   }, []);
-  return (
-    <ImageList
-      sx={{ width: 1000, height: 400 }}
-      cols={4}
-      rowHeight={164}
-      component="main"
-    >
-      {datas.map((item) => (
-        <ImageListItem key={item.id}>
-          <img
-            src={`${item.url}?w=164&h=164&fit=crop&auto=format`}
-            srcSet={`${item.url}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-            alt={item.url}
-            loading="lazy"
-          />
 
-          <ImageListItemBar
-            title={item.title}
-            actionIcon={
-              <IconButton
-                sx={{ color: "white" }}
-                aria-label={`info about ${item.title}`}
-              ></IconButton>
-            }
-          />
-        </ImageListItem>
-      ))}
-    </ImageList>
+  return (
+    <div className="App">
+      <h4 align="center">Posts</h4>
+      <MaterialTable
+        title="Posts"
+        data={data}
+        columns={columns}
+        
+        
+        
+      />
+    </div>
   );
 }
+
 export default Posts;

@@ -1,48 +1,39 @@
-import { React, useState, useEffect } from "react";
-import {
-  ImageList,
-  ImageListItem,
-  ImageListItemBar,
-  IconButton,
-} from "@mui/material";
+import React,{useState, useEffect} from 'react';
+import MaterialTable from 'material-table';
 
-export function User() {
-  const [datas, setDatas] = useState([]);
+import React,{useState, useEffect} from 'react';
+import MaterialTable from 'material-table';
+
+function UserInfo() {
+
+  const [data, setData] = useState([])
+  const columns = [
+    { title: "ID", field: "id" },
+    { title: "Username", field: "username" },
+    { title: "Name", field: "name" },
+    { title: "Email", field: "email" },
+    { title: "Phone", field: "phone" },
+    { title: "Web Link", field: 'website' }
+  ]
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((Data) => {
-        setDatas(Data);
-      });
-  }, []);
-  return (
-    <ImageList
-      sx={{ width: 1000, height: 400 }}
-      cols={4}
-      rowHeight={164}
-      component="main"
-    >
-      {datas.map((item) => (
-        <ImageListItem key={item.name}>
-          <img
-            src={`${item.name}?w=164&h=164&fit=crop&auto=format`}
-            srcSet={`${item.name}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-            alt={item.username}
-            loading="lazy"
-          />
+      .then(resp => resp.json())
+      .then(resp => {
+        setData(resp)
+      })
+  }, [])
 
-          <ImageListItemBar
-            username={item.username}
-            actionIcon={
-              <IconButton
-                sx={{ color: "white" }}
-                aria-label={`info about ${item.username}`}
-              ></IconButton>
-            }
-          />
-        </ImageListItem>
-      ))}
-    </ImageList>
+  return (
+    <div className="App">
+      <h1 align="center">React-App</h1>
+      <h4 align='center'>Material Table</h4>
+      <MaterialTable
+        title="Employee Data"
+        data={data}
+        columns={columns}
+      />
+    </div>
   );
 }
-export default User;
+
+export default UserInfo;

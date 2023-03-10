@@ -7,8 +7,8 @@ function Todos() {
   const columns = [
     { title: "UserId", field: "userId" },
     { title: "Id", field: "id" },
-    { title: "Name", field: "title" },
-    { title: "Email", field: "completed" },
+    { title: "Title", field: "title" },
+    { title: "Status", field: "completed" },
    
     { title: "Web Link", field: 'website' }
   ]

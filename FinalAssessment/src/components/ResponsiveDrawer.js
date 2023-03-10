@@ -35,6 +35,9 @@ export default function ResponsiveDrawer(props: Props) {
   function navigateHandlerUser() {
     navigate("/users");
   }
+  function navigateHandlerPosts() {
+    navigate("/posts");
+  }
   const { window } = props;
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -74,9 +77,9 @@ export default function ResponsiveDrawer(props: Props) {
       </List>
       <Divider />
       <List>
-        {["Posts","Comments"].map((text, index) => (
+        {["Posts", "Comments"].map((text, index) => (
           <ListItem key={text} disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={navigateHandlerPosts}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
@@ -92,7 +95,6 @@ export default function ResponsiveDrawer(props: Props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar
@@ -113,7 +115,7 @@ export default function ResponsiveDrawer(props: Props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-           User Dashboard
+            User Dashboard
           </Typography>
         </Toolbar>
       </AppBar>

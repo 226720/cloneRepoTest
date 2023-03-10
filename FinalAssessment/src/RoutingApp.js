@@ -8,6 +8,7 @@ import Password from "./components/Password";
 import ProductInfo from "./components/ProductInfo";
 import UserInfo from "./components/UserInfo";
 import Posts from "./components/Posts";
+import Todos from "./components/Todos";
 
 const router= createBrowserRouter([
     {path:'/',element:<Login/> },
@@ -16,7 +17,8 @@ const router= createBrowserRouter([
     {path:'/dashboard', element:<Dashboard />},
     {path:'/products', element:<ProductInfo />},
     {path:'/users', element:<UserInfo />},
-    {path:'/posts', element:<Posts/>}
+    {path:'/posts', element:<Posts/>},
+    {path:'/todos', element:<Todos/>}
 ]);
 function App(){
     return <RouterProvider router={router}/>
